@@ -2,6 +2,12 @@
 
 A React application that visualizes embeddings from Cohere's v4 embedding model. Embed text and images, view their vector representations, and explore their relationships in an interactive 3D vector space with similarity search and reranking capabilities.
 
+## Demo
+
+🚀 **Live Demo**: [https://cohere-embedding-workshop-xn8l.vercel.app/](https://cohere-embedding-workshop-xn8l.vercel.app/)
+
+![Demo Website](public/demo-web.png)
+
 ## Features
 
 ### 🎯 Core Functionality
@@ -35,7 +41,7 @@ A React application that visualizes embeddings from Cohere's v4 embedding model.
 ## Prerequisites
 
 - Node.js 18+ and npm
-- Cohere API key ([Get one here](https://dashboard.cohere.com/api-keys))
+- Cohere API key - [Get your API key here](https://dashboard.cohere.com/welcome/login)
 
 ## Installation
 
@@ -55,7 +61,7 @@ npm install
 cp .env.example .env
 ```
 
-4. Add your Cohere API key to `.env`:
+4. Get your Cohere API key from [https://dashboard.cohere.com/welcome/login](https://dashboard.cohere.com/welcome/login) and add it to `.env`:
 ```
 VITE_COHERE_API_KEY=your_cohere_api_key_here
 ```
