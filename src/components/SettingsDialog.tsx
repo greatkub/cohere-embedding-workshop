@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
     Dialog,
     DialogTitle,
@@ -23,12 +23,6 @@ export const SettingsDialog = ({ open, onClose }: SettingsDialogProps) => {
     const [apiKey, setApiKey] = useState('');
     const [showKey, setShowKey] = useState(false);
 
-    useEffect(() => {
-        if (open) {
-            setApiKey(getStoredApiKey());
-        }
-    }, [open]);
-
     const handleSave = () => {
         setStoredApiKey(apiKey);
         onClose();
@@ -36,10 +30,17 @@ export const SettingsDialog = ({ open, onClose }: SettingsDialogProps) => {
         window.location.reload();
     };
 
+    const handleEnter = () => {
+        setApiKey(getStoredApiKey());
+    };
+
     return (
         <Dialog
             open={open}
             onClose={onClose}
+            TransitionProps={{
+                onEnter: handleEnter
+            }}
             PaperProps={{
                 sx: {
                     bgcolor: '#0A0A0A',

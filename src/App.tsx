@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { Stack, Typography, Button, ThemeProvider, createTheme, CssBaseline, Box, Divider, IconButton } from '@mui/material';
 import { Settings as SettingsIcon } from '@mui/icons-material';
 import { TextEmbedder } from './components/TextEmbedder';
@@ -81,18 +81,11 @@ export const App = () => {
         setSelectedEmbeddingId(undefined);
     };
 
-    const selectedEmbedding = useMemo(() => {
-        return embeddings.find(e => e.id === selectedEmbeddingId);
-    }, [embeddings, selectedEmbeddingId]);
+    const selectedEmbedding = embeddings.find(e => e.id === selectedEmbeddingId);
 
-    const topKResults = useMemo(() => {
-        if (!selectedEmbedding) return [];
-        return findTopKSimilar(selectedEmbedding, embeddings, topK);
-    }, [selectedEmbedding, embeddings, topK]);
+    const topKResults = selectedEmbedding ? findTopKSimilar(selectedEmbedding, embeddings, topK) : [];
 
-    const topKIds = useMemo(() => {
-        return topKResults.map(r => r.embedding.id);
-    }, [topKResults]);
+    const topKIds = topKResults.map(r => r.embedding.id);
 
     return (
         <ThemeProvider theme={theme}>

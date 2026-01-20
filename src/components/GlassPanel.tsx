@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 import { Box, BoxProps, styled } from '@mui/material';
 
-interface GlassPanelProps extends BoxProps {
+type GlassPanelProps = BoxProps & {
     children: ReactNode;
     opacity?: number;
     blur?: number;
-}
+};
 
 const StyledGlassBox = styled(Box, {
     shouldForwardProp: (prop) => prop !== 'opacity' && prop !== 'blur',

@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import Plot from 'react-plotly.js';
 import { Typography, Box, alpha } from '@mui/material';
 import { reduceTo3D, type Point3D } from '../utils/pca';
@@ -11,12 +10,9 @@ type VectorSpace3DProps = {
 };
 
 export const VectorSpace3D = ({ embeddings, selectedEmbeddingId, topKIds = [] }: VectorSpace3DProps) => {
-  const validEmbeddings = useMemo(() =>
-    embeddings.filter(emb => emb.vector && emb.vector.length > 0),
-    [embeddings]
-  );
+  const validEmbeddings = embeddings.filter(emb => emb.vector && emb.vector.length > 0);
 
-  const points3D = useMemo(() => reduceTo3D(validEmbeddings), [validEmbeddings]);
+  const points3D = reduceTo3D(validEmbeddings);
 
   if (validEmbeddings.length === 0) {
     return (
